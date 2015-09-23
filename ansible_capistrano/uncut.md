@@ -1,28 +1,28 @@
 # Ansible et Capistrano
 
-La bo[a]te - 23 septembre 2015
+La Bo[a]te - 23 septembre 2015
 
 ## Scénario
 
 * Fin avril Heroku annonce la fin des "free dynos" tels que nous les connaissons
-* Notre site tourne sur cette hébergement depuis plus d'un an
+* Notre site tourne sur cet hébergement depuis plus d'un an
 
-## Le contexte (?)
+## Contexte
 
 * On ne peut faire pointer un enregistrement DNS A de manière durable
 * Le déploiement prend une plombe
-  * @mmaayylliiss déploie tout les jours, #copiercreer
+  * @mmaayylliiss déploie tous les jours, #CopierCreer
 
 ## Le déploiement tranquille
 
 * Automatisons la mise en place du serveur
 * Automatisons le déploiement du site
 
-### Mes dépendances logiciels 
+### Mes dépendances logicielles
 
 * Nginx
 * Ruby
-* Nodejs
+* Node.js
 * Git
 * Varnish
 
@@ -36,9 +36,7 @@ Installer via pip :
 
 #### Ansible Galaxy
 
-On ne va pas réinventer la roue, beaucoup de gens installe Nginx, Varnish et consort donc on va utiliser des "Règles de jeu" (playbook) déjà prêt :)
-
-https://galaxy.ansible.com/
+https://galaxy.ansible.com
 
 On installe un rôle comme ceci : 
 
@@ -46,7 +44,7 @@ On installe un rôle comme ceci :
 
 ---
 layout: code
-title: Mon playbook 
+title: Mon playbook
 ---
 
 - hosts: wearemd
@@ -80,9 +78,7 @@ varnish:
   storage: "malloc,256m"
   default_vcl: /etc/varnish/default.vcl
   send_timeout: 60
-  vcl_dir: /etc/varnish 
-
-#### Qui fait référence à un fichier d'inventaire
+  vcl_dir: /etc/varnish
 
 ---
 layout: code
@@ -91,7 +87,6 @@ title: Inventaire
 
 [wearemd]
 vps192633.ovh.net ansible_ssh_user=foo
-
 
 ### Vagrant
 
@@ -124,7 +119,7 @@ title: Playbook vagrant
 
 ### Capistrano WTF ?
 
-### Comment ça ce passe dans le cas de cette application
+### Comment ça se passe dans le cas de cette application
 
 gems : 
 
