@@ -115,25 +115,24 @@ title: Playbook vagrant
 
 `vagrant up`
 
-## Déployer l'application
-
 ### Capistrano WTF ?
 
 ### Comment ça se passe dans le cas de cette application
 
-gems : 
+---
+layout: code
+title: Gemfile
+---
 
-```
 gem 'capistrano'
 gem 'capistrano-unicorn-nginx', github: 'Awea/capistrano-unicorn-nginx'
 gem 'capistrano-bundler', github: 'capistrano/bundler'
-```
 
-config : 
+---
+layout: code
+title: deploy.rb
+---
 
-**deploy.rb**
-
-```
 lock '3.4.0'
 
 set :application, 'wearemd_mini'
@@ -152,20 +151,20 @@ namespace :deploy do
 
   after :published, 'varnish:clear_cache'
 end
-```
 
-**vagrant.rb**
+---
+layout: code
+title: vagrant.rb
+---
 
-```
 server 'ip-server', user: 'vagrant', roles: %w{web app}
 
  set :ssh_options, {
    keys: %w(~/.ssh/id_rsa),
    forward_agent: true
  }
-```
 
-**Les commandes qui vont bien :**
+### Les commandes qui vont bien
 
 ```
 ssh-copy-id vagrant@ip-serv
